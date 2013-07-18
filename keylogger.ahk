@@ -12,12 +12,15 @@ mouseevent(message) {
     FileAppend, `n{%message%} %x% %y% %ProcessName%: %Title%`n, *%log%
 }
 
-Loop {
-    WinWaitNotActive, % "ahk_id " WinActive("A")
+getwin() {
     WinGetActiveTitle, Title
     WinGet, ProcessName, ProcessName, A
     FormatTime, time, , yyyy-MM-dd-HH:mm:ss
     FileAppend, `n%time% %ProcessName%: %Title%`n, *%log%
+}
+
+Loop {
+    WinWaitNotActive, % "ahk_id " WinActive("A")
 }
 
 ~a::FileAppend, a, *%log%
