@@ -19,7 +19,7 @@ mouseevent(message) {
 
     if (%previousnewline% == 0)
         FileAppend, `n, *%log%
-    FileAppend, {%message%} %x% %y% %ProcessName%: %Title%`n, *%log%
+    FileAppend, {%message%} %x% %y% %ProcessName%: %Title%: %controln%`n, *%log%
     previousnewline = 1
 }
 
