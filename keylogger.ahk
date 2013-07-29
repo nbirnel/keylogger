@@ -13,7 +13,7 @@ keyevent(key) {
 }
 
 mouseevent(message) {
-    global 
+    global log
     WinGetActiveTitle, Title
     WinGet, ProcessName, ProcessName, A
     MouseGetPos, x, y, window, controln
@@ -23,7 +23,7 @@ mouseevent(message) {
 }
 
 getwin() {
-    global
+    global log
     WinGetActiveTitle, Title
     WinGet, win_proc, ProcessName, A
     WinGet, uniq_id, ID, A
