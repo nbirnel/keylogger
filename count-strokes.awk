@@ -1,6 +1,7 @@
 #!/usr/bin/awk -f
 
 BEGIN { 
+    FS = ""
     current_repeats=1 
     errors=0
     windowchanges=0
@@ -8,21 +9,23 @@ BEGIN {
     keyevents=0
     unique_keyevents=0
     possible_autorepeats=0
+    uniq_wins=0
 }
 
 {
-    if ($0 ~ /^/) { windowchanges++ }
-    else if ($0 ~ /^/) { 
+    if ($0 ~ /^/) { 
+        windowchanges++ 
+        winid[$3]++
+    } else if ($0 ~ /^/) { 
         is_mouse_key_switch("m")
         mouseevents++ 
-    }
-
-    else if ($0 ~ /^$/) { errors++ }
-    else {
+    } else if ($0 ~ /^$/) {
+        errors++ 
+    } else {
         is_mouse_key_switch("k")
         keyevents++ 
 
-        if ($0 == last) {
+        if ($0 == lastkey) {
             possible_autorepeats++
             current_repeats++
             if (current_repeats == 2) {
@@ -33,7 +36,7 @@ BEGIN {
             unique_keyevents++
         }
         
-        last=$0
+        lastkey=$0
     }
 }
 
@@ -41,6 +44,9 @@ END {
     printf("%s: %d\n", "errors", errors)
     printf("%s: %d\n", "mouse_key_switch", mouse_key_switch)
     printf("%s: %d\n", "windowchanges", windowchanges)
+    for (win in winid) 
+        uniq_wins++
+    printf("%s: %d\n", "uniq_wins", uniq_wins)
     printf("%s: %d\n", "mouseevents", mouseevents)
     printf("%s: %d\n", "keyevents", keyevents)
     printf("%s: %d\n", "unique_keyevents", unique_keyevents)
