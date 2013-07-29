@@ -19,14 +19,10 @@ BEGIN {
         if ($0 == last) {
             possible_autorepeats++
             current_repeats++
-            if (current_repeats == 3) {
+            if (current_repeats == 2) {
                 possible_autorepeat_events++
-                possible_autorepeats++
-            } else if (current_repeats > 3) {
-                possible_autorepeats++
             }
-        }
-        else {
+        } else {
             current_repeats=1
             unique_keyevents++
         }
@@ -41,7 +37,7 @@ END {
     printf("%s: %d\n", "mouseevents", mouseevents)
     printf("%s: %d\n", "keyevents", keyevents)
     printf("%s: %d\n", "unique_keyevents", unique_keyevents)
-    printf("%s: %d\n", "possible_autorepeat_revents", possible_autorepeat_revents)
+    printf("%s: %d\n", "possible_autorepeat_events", possible_autorepeat_events)
     printf("%s: %d\n", "possible_autorepeats", possible_autorepeats)
     printf("%s: %d\n", "events", NR - errors)
 }
