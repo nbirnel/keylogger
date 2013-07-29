@@ -12,10 +12,16 @@ BEGIN {
 
 {
     if ($0 ~ /^/) { windowchanges++ }
-    else if ($0 ~ /^/) { mouseevents++ }
+    else if ($0 ~ /^/) { 
+        is_mouse_key_switch("m")
+        mouseevents++ 
+    }
+
     else if ($0 ~ /^$/) { errors++ }
     else {
-        keyevents++
+        is_mouse_key_switch("k")
+        keyevents++ 
+
         if ($0 == last) {
             possible_autorepeats++
             current_repeats++
@@ -33,6 +39,7 @@ BEGIN {
 
 END {
     printf("%s: %d\n", "errors", errors)
+    printf("%s: %d\n", "mouse_key_switch", mouse_key_switch)
     printf("%s: %d\n", "windowchanges", windowchanges)
     printf("%s: %d\n", "mouseevents", mouseevents)
     printf("%s: %d\n", "keyevents", keyevents)
@@ -41,3 +48,11 @@ END {
     printf("%s: %d\n", "possible_autorepeats", possible_autorepeats)
     printf("%s: %d\n", "events", NR - errors)
 }
+
+function is_mouse_key_switch(mk) {
+    if (mouse_key != mk) {
+        mouse_key_switch++
+    }
+    mouse_key = mk
+}
+
