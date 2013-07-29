@@ -17,7 +17,7 @@ mouseevent(message) {
     WinGet, ProcessName, ProcessName, A
     MouseGetPos, x, y, window, controln
 
-    if (%previousnewline% == 0)
+    ;if (%previousnewline% == 0)
         FileAppend, `n, *%log%
     FileAppend, {%message%} %x% %y% %ProcessName%: %Title%: %controln%`n, *%log%
     previousnewline = 1
@@ -29,7 +29,7 @@ getwin() {
     WinGet, ProcessName, ProcessName, A
     FormatTime, time, , yyyy-MM-dd-HH:mm:ss
 
-    if (%previousnewline% == 0)
+    ;if (%previousnewline% == 0)
         FileAppend, `n, *%log%
     FileAppend, %time% %ProcessName%: %Title%`n, *%log%
     previousnewline = 1
