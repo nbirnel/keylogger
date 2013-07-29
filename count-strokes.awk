@@ -1,7 +1,7 @@
 #!/usr/bin/awk -f
 
 BEGIN { 
-    repeats=1 
+    current_repeats=1 
     errors=0
     windowchanges=0
     mouseevents=0
@@ -18,10 +18,16 @@ BEGIN {
         keyevents++
         if ($0 == last) {
             possible_autorepeats++
-            repeats++
+            current_repeats++
+            if (current_repeats > 2) {
+                possible_autorepeats++
+                if (current_repeats == 3) {
+                    possible_autorepeat_events++
+                }
+            }
         }
         else {
-            repeats=1
+            current_repeats=1
             unique_keyevents++
         }
         
@@ -35,6 +41,7 @@ END {
     printf("%s: %d\n", "mouseevents", mouseevents)
     printf("%s: %d\n", "keyevents", keyevents)
     printf("%s: %d\n", "unique_keyevents", unique_keyevents)
+    printf("%s: %d\n", "possible_autorepeat_revents", possible_autorepeat_revents)
     printf("%s: %d\n", "possible_autorepeats", possible_autorepeats)
     printf("%s: %d\n", "events", NR - errors)
 }
