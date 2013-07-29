@@ -19,11 +19,11 @@ BEGIN {
         if ($0 == last) {
             possible_autorepeats++
             current_repeats++
-            if (current_repeats > 2) {
+            if (current_repeats == 3) {
+                possible_autorepeat_events++
                 possible_autorepeats++
-                if (current_repeats == 3) {
-                    possible_autorepeat_events++
-                }
+            } else if (current_repeats > 3) {
+                possible_autorepeats++
             }
         }
         else {
