@@ -18,7 +18,8 @@ mouseevent(message) {
     WinGet, ProcessName, ProcessName, A
     MouseGetPos, x, y, window, controln
 
-    FileAppend, %A_Tab%{%message%}%A_Tab%%x%%A_Tab%%y%%A_Tab%%ProcessName%%A_Tab%%Title%%A_Tab%%controln%`n, *%log%
+    ; ASCII 31 octal 037 Unit Separator
+    FileAppend, %A_Tab%{%message%}%A_Tab%%x%%A_Tab%%y%%A_Tab%%ProcessName%%A_Tab%%Title%%A_Tab%%controln%`n, *%log%
 }
 
 getwin() {
@@ -28,7 +29,8 @@ getwin() {
     WinGet, uniq_id, ID, A
     FormatTime, time, , yyyy-MM-dd-HH-mm-ss
 
-    FileAppend, %A_Tab%%time%%A_Tab%%uniq_id%%A_Tab%%win_proc%%A_Tab%%Title%`n, *%log%
+    ; ASCII 30 octal 036 Record Separator
+    FileAppend, %A_Tab%%time%%A_Tab%%uniq_id%%A_Tab%%win_proc%%A_Tab%%Title%`n, *%log%
 }
 
 make_menu() {

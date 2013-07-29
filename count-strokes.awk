@@ -13,10 +13,12 @@ BEGIN {
 }
 
 {
-    if ($0 ~ /^/) { 
+    # ASCII 30 octal 036 Record Separator for window focus
+    if ($0 ~ /^/) { 
         windowchanges++ 
         winid[$3]++
-    } else if ($0 ~ /^/) { 
+    # ASCII 31 octal 037 Unit Separator for mouse clicks
+    } else if ($0 ~ /^/) { 
         is_mouse_key_switch("m")
         mouseevents++ 
     } else if ($0 ~ /^$/) {
