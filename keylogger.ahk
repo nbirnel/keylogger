@@ -18,16 +18,16 @@ mouseevent(message) {
     WinGet, ProcessName, ProcessName, A
     MouseGetPos, x, y, window, controln
 
-    FileAppend, {%message%} %x% %y% %ProcessName%: %Title%: %controln%`n, *%log%
+    FileAppend, {%message%}%x%%y%%ProcessName%%Title%%controln%`n, *%log%
 }
 
 getwin() {
     global
     WinGetActiveTitle, Title
     WinGet, ProcessName, ProcessName, A
-    FormatTime, time, , yyyy-MM-dd-HH:mm:ss
+    FormatTime, time, , yyyy-MM-dd-HH-mm-ss
 
-    FileAppend, %time% %ProcessName%: %Title%`n, *%log%
+    FileAppend, %time%%ProcessName%%Title%`n, *%log%
 }
 
 make_menu() {
