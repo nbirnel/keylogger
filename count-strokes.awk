@@ -1,7 +1,7 @@
 #!/usr/bin/awk -f
 
 BEGIN { 
-    FS = ""
+    FS = "	"
     current_repeats=1 
     errors=0
     windowchanges=0

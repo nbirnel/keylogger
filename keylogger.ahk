@@ -18,7 +18,7 @@ mouseevent(message) {
     WinGet, ProcessName, ProcessName, A
     MouseGetPos, x, y, window, controln
 
-    FileAppend, {%message%}%x%%y%%ProcessName%%Title%%controln%`n, *%log%
+    FileAppend, %A_Tab%{%message%}%A_Tab%%x%%A_Tab%%y%%A_Tab%%ProcessName%%A_Tab%%Title%%A_Tab%%controln%`n, *%log%
 }
 
 getwin() {
@@ -28,7 +28,7 @@ getwin() {
     WinGet, uniq_id, ID, A
     FormatTime, time, , yyyy-MM-dd-HH-mm-ss
 
-    FileAppend, %time%%uniq_id%%win_proc%%Title%`n, *%log%
+    FileAppend, %A_Tab%%time%%A_Tab%%uniq_id%%A_Tab%%win_proc%%A_Tab%%Title%`n, *%log%
 }
 
 make_menu() {
