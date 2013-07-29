@@ -30,6 +30,15 @@ getwin() {
     FileAppend, %time% %ProcessName%: %Title%`n, *%log%
 }
 
+make_menu() {
+    Menu, TRAY, NoStandard
+    Menu, TRAY, add, YOU ARE BEING LOGGED - help, help_handler
+    Menu, TRAY, add,
+    Menu, TRAY, add, About Keylogger, about_handler
+    Menu, TRAY, add, Exit, exit_handler
+}
+
+make_menu()
 getwin()
 
 Loop {
@@ -733,3 +742,23 @@ Loop {
 ~!WheelRight::mouseevent("WheelRight")
 ~^WheelRight::mouseevent("WheelRight")
 
+about_handler:
+aboutmsg = 
+(
+keylogger ©2013 Noah Birnel (nbirnel at gmail dot com)
+This program is not intended for spying.
+)
+MsgBox %aboutmsg%
+return
+
+exit_handler:
+ExitApp
+return
+
+help_handler:
+helpmsg = 
+(
+All of your mouse clicks and key presses are being logged to %log%
+)
+MsgBox %helpmsg%
+return
