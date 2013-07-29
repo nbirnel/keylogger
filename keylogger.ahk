@@ -24,10 +24,11 @@ mouseevent(message) {
 getwin() {
     global
     WinGetActiveTitle, Title
-    WinGet, ProcessName, ProcessName, A
+    WinGet, win_proc, ProcessName, A
+    WinGet, uniq_id, ID, A
     FormatTime, time, , yyyy-MM-dd-HH-mm-ss
 
-    FileAppend, %time%%ProcessName%%Title%`n, *%log%
+    FileAppend, %time%%uniq_id%%win_proc%%Title%`n, *%log%
 }
 
 make_menu() {
