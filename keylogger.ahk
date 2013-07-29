@@ -695,6 +695,15 @@ Loop {
 ~!PrintScreen::keyevent("{PrintScreen}")
 ~^PrintScreen::keyevent("{PrintScreen}")
 
+~LWin::keyevent("{LWin}")
+~RWin::keyevent("{RWin}")
+~LControl::keyevent("{LControl}")
+~RControl::keyevent("{RControl}")
+~LShift::keyevent("{LShift}")
+~RShift::keyevent("{RShift}")
+~LAlt::keyevent("{LAlt}")
+~RAlt::keyevent("{RAlt}")
+
 ~LButton::mouseevent("LButton")
 ~#LButton::mouseevent("LButton")
 ~!LButton::mouseevent("LButton")
@@ -723,13 +732,4 @@ Loop {
 ~#WheelRight::mouseevent("WheelRight")
 ~!WheelRight::mouseevent("WheelRight")
 ~^WheelRight::mouseevent("WheelRight")
-
-~LWin::keyevent("{LWin}")
-~RWin::keyevent("{RWin}")
-~LControl::keyevent("{LControl}")
-~RControl::keyevent("{RControl}")
-~LShift::keyevent("{LShift}")
-~RShift::keyevent("{RShift}")
-~LAlt::keyevent("{LAlt}")
-~RAlt::keyevent("{RAlt}")
 
