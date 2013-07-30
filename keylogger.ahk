@@ -762,8 +762,9 @@ return
 about_handler:
 aboutmsg = 
 (
-keylogger ©2013 Noah Birnel (nbirnel at gmail dot com)
+keylogger Copyright 2013 Noah Birnel (nbirnel at gmail dot com)
 This program is not intended for spying.
+You are licensed to use it for capturing your own keystrokes.
 )
 MsgBox %aboutmsg%
 return
