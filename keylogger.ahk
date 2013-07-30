@@ -32,13 +32,13 @@ mouseevent(message) {
 
 getwin() {
     global log
+    FormatTime, time, , yyyy-MM-dd-HH-mm-ss
     WinGetActiveTitle, Title
     WinGet, win_proc, ProcessName, A
     WinGet, uniq_id, ID, A
-    FormatTime, time, , yyyy-MM-dd-HH-mm-ss
-
     ; ASCII 30 octal 036 Record Separator
-    FileAppend, %A_Tab%%time%%A_Tab%%uniq_id%%A_Tab%%win_proc%%A_Tab%%Title%`n, *%log%
+    if %uniq_id%
+        FileAppend, %A_Tab%%time%%A_Tab%%uniq_id%%A_Tab%%win_proc%%A_Tab%%Title%`n, *%log%
 }
 
 make_menu() {
