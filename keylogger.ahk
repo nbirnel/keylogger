@@ -3,9 +3,17 @@
 ;
 
 #NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases.
-log = %A_Desktop%\keylogger.txt
+logdir = %A_AppData%\keylogger
+FileCreateDir, %logdir%
+
 doublequote = `"
 
+getlog(logdir) {
+    FormatTime, time, , yyyy-MM-dd-HH-mm-ss
+    newlog = %logdir%\%time%.txt
+    return %newlog%
+}
+    
 keyevent(key) {
     global log
     FileAppend, %key%`n, *%log%
@@ -37,10 +45,12 @@ make_menu() {
     Menu, TRAY, NoStandard
     Menu, TRAY, add, YOU ARE BEING LOGGED - help, help_handler
     Menu, TRAY, add,
+    Menu, TRAY, add, Start new logfile, newlog_handler
     Menu, TRAY, add, About Keylogger, about_handler
     Menu, TRAY, add, Exit, exit_handler
 }
 
+log := getlog(logdir)
 make_menu()
 getwin()
 
@@ -744,6 +754,10 @@ Loop {
 ~#WheelRight::mouseevent("WheelRight")
 ~!WheelRight::mouseevent("WheelRight")
 ~^WheelRight::mouseevent("WheelRight")
+
+newlog_handler:
+log := getlog(logdir)
+return
 
 about_handler:
 aboutmsg = 
